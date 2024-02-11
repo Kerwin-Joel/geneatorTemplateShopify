@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Papa from 'papaparse';
 import './App.css';
 import { useEffect } from 'react';
+import { ArtificialLights } from './components/ArtificialLights';
+
 
 function App() {
   const [archivoInput, setArchivoInput] = useState(null);
@@ -11,6 +13,7 @@ function App() {
   const [urlModify, setURLModify] = useState([]);
   const [productos, setProductos] = useState([]);
   const [csvFinal, setCSVFinal] = useState([]);
+  const [notificacion, setShowNotification] = useState(false);
 
   const manejarCambioArchivo = (e) => {
     const archivo = e.target.files[0];
@@ -78,6 +81,7 @@ function App() {
   };
 
   const procesarYGenerarCSV = () => {
+
     const nuevasCabeceras = [
       'Handle',
       'Title',
@@ -294,6 +298,7 @@ function App() {
     ).join('\n');
   
     descargarCSV(csvSalida, 'datos_salida.csv');
+    setShowNotification(true)
   };
 
   const descargarCSV = (csv, nombreArchivo) => {
@@ -354,8 +359,12 @@ function App() {
         </label>
       <div className='container_buttons'>
         <button onClick={buscarImagenesDeShopify}>Procesar productos</button>
-        <button onClick={procesarYGenerarCSV}>Descargar Plantilla</button>
-      </div> 
+        <div className='container_artificial_Lights'>
+          <button onClick={procesarYGenerarCSV}>Descargar Plantilla</button>
+          { notificacion && <ArtificialLights/> }
+        </div>
+      </div>
+      
       {
         urlModify && (
           <div>

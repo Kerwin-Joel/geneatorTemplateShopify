@@ -1,0 +1,33 @@
+.c-animation--confetti {
+	position: relative;
+	// top: 0;
+	top: -100%;
+	position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.c-animation__star {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	opacity: 0;
+	width: 10px;
+	animation: bang 1s ease-out forwards;
+    animation-iteration-count: 1;
+}
+
+@for $i from 1 through 50 {
+	.c-animation__star:nth-child(#{$i}) {
+		transform: translate3d(random(500) - 250 + px, random(200) - 100 + px, 0)
+			rotate(random(360) + deg);
+		color: hsla(random(360), 100%, 50%, 1);
+	}
+}
+
+@keyframes bang {
+	from {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+} 
