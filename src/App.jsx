@@ -332,7 +332,7 @@ function App() {
   const realizarConsultaFetch = async (sku) => {
 
     try {
-      const response = await fetch(`http://localhost:3001/shopify?SKU=${sku}`);
+      const response = await fetch(`https://apishpifyclient-production.up.railway.app/shopify?SKU=${sku}`);
       
       if (!response.ok) throw new Error(`Error en la consulta: ${response.statusText}`);
       
@@ -348,13 +348,13 @@ function App() {
 
   return (
     <div>
-      <h1>Procesar CSV</h1>
+      <h1>TuttiTienda</h1>
         <label id="largeFile" htmlFor="file">
           <input type="file" onChange={manejarCambioArchivo} id='file' />
         </label>
       <div className='container_buttons'>
         <button onClick={buscarImagenesDeShopify}>Procesar productos</button>
-        <button onClick={procesarYGenerarCSV}>Descargar CSV</button>
+        <button onClick={procesarYGenerarCSV}>Descargar Plantilla</button>
       </div> 
       {
         urlModify && (

@@ -41,7 +41,10 @@
   color: #888;
 }
 
-
+label {
+  display: flex;
+  justify-content: center;
+}
 
 
 label#largeFile:after {
@@ -53,9 +56,12 @@ label#largeFile:after {
   border:5px dashed #ccc;
   color:#ccc;
   font-size:30px;
-  display: block;
+  display: flex;
   max-width:800px;
+  width:800px;
   height: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
 label#largeFile:hover:after {
